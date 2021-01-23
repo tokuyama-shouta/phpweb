@@ -1,6 +1,6 @@
 <?php
 
-  $blog = $_GET;
+  $blog = $_POST;
 
   foreach($blog as $key => $value) {
     echo '<pre>';
