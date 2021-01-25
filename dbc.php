@@ -1,9 +1,5 @@
 <?php
-
-  // 関数一つに一つの機能のみを持たせる
-  // 1.データベース接続
-  // 2.データベース取得
-  // 3.カテゴリー名を表示する
+  namespace Blog\Dbc;
 
   // 1.データベース接続
   // 引数：なし
@@ -16,8 +12,8 @@
     $pass = 'ts1031';
 
     try{
-      $dbh = new PDO($dsn,$user,$pass,[
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      $dbh = new \PDO($dsn,$user,$pass,[
+        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
       ]);
     }catch(PDOException $e) {
       echo '接続失敗'. $e->getMessage();
@@ -37,7 +33,7 @@
     // 2 SQLの実行
     $stmt = $dbh->query($sql);
     // 3 SQLの結果を受け取る
-    $result = $stmt->fetchall(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchall(\PDO::FETCH_ASSOC);
     return $result;
     $dbh = null;
     
@@ -57,33 +53,32 @@
       return 'その他';
     }
   };
+  //引数：$id
+  //返り値：$result
+  function getBlog($id) {
+
+    if(empty($id)) {
+      exit('idが不正です。');
+    };
+    
+    $dbh = dbConnect();
+    
+    // SQL準備
+    $stmt = $dbh->prepare('SELECT * FROM blog Where id = :id');
+    $stmt->bindValue(':id',(int)$id, \PDO::PARAM_INT);
+    
+    // SQL実行
+    $stmt->execute();
+    // 結果を取得
+    $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+    // var_dump($result);
+    
+    if(!$result) {
+      exit('ブログがありません。');
+    }
+
+    return $result;
+  }
 
 ?>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ブログ一覧</title>
-</head>
-<body>
-  <h2>ブログ一覧</h2>
-  <table>
-    <tr>
-      <th>No</th>
-      <th>タイトル</th>
-      <th>カテゴリ</th>
-    </tr>
-    <?php foreach($blogData as $column): ?>
-    <tr>
-      <td><?php echo $column['id']?></td>
-      <td><?php echo $column['title']?></td>
-      <td><?php echo setCategoryName($column['category'])?></td>
-      <td><a href="/detail.php?id=<?php echo $column['id']?>">詳細</a></td>
-    </tr>
-    <?php endforeach; ?>
-  </table>
-  
-</body>
-</html>
