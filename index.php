@@ -1,7 +1,9 @@
 <?php
-  require_once('dbc.php');
+  require_once('blog.php');
    //取得したデータを表示
-  $blogData = getAllBlog();
+  $blog = new Blog();
+  $blogData = $blog->getAll();
+  
 
 ?>
 
@@ -25,7 +27,7 @@
     <tr>
       <td><?php echo $column['id']?></td>
       <td><?php echo $column['title']?></td>
-      <td><?php echo setCategoryName($column['category'])?></td>
+      <td><?php echo $blog->setCategoryName($column['category'])?></td>
       <td><a href="/detail.php?id=<?php echo $column['id']?>">詳細</a></td>
     </tr>
     <?php endforeach; ?>

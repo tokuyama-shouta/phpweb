@@ -1,15 +1,14 @@
 <?php
 
 // 1 require_onceを使ってみよう
-require_once('dbc.php');
+require_once('blog.php');
 
 // 2 namespaceを設定しよう
 
 
-// 3 useを使おう
-
-
-$result = getBlog($_GET['id']);
+// 3 useを使
+$blog = new Blog();
+$result = $blog->getById($_GET['id']);
 
 ?>
 
@@ -24,7 +23,7 @@ $result = getBlog($_GET['id']);
   <h2>ブログ詳細</h2>
   <h3>タイトル：<?php echo $result['title']?></h3>
   <p>投稿日時：<?php echo $result['post_at']?></p>
-  <p>カテゴリ：<?php echo setCategoryName($result['category'])?></p>
+  <p>カテゴリ：<?php echo $blog->setCategoryName($result['category'])?></p>
   <hr>
   <p>本文：<?php echo $result['contents']?></p>
   
