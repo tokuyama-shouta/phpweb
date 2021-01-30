@@ -1,37 +1,35 @@
 <?php
-  require_once('blog.php');
-   //取得したデータを表示
-  $blog = new Blog();
-  $blogData = $blog->getAll();
-  
+
+  // 変数
+
+  $title = "PHPテスト";
+  $contents = 'PHPテストです。';
+  $post_at = '2020/01/29';
+  $tag = ['PHP','プログラミング'];
+  $status = true; //公開 //非公開 false
+  echo $title;
+  echo '<br>';
+  echo $contents;
+  echo '<br>';
+  echo $post_at;
+  echo '<br>';
+  print_r($tag);
+  echo '<br>';
+
+  // 定数
+  const ID = 1;
+  echo ID;
+  echo '<br>';
+
+  // データ型
+  var_dump($title);
+
+  // ""と''の違い
+  echo '<br>';
+  echo "タイトル名：$title";
+  echo '<br>';
+  echo 'タイトル名：$title';
+  // ''の方が処理速度が早い
+
 
 ?>
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ブログ一覧</title>
-</head>
-<body>
-  <h2>ブログ一覧</h2>
-  <p><a href="/form.html">新規作成</a></p>
-  <table>
-    <tr>
-      <th>No</th>
-      <th>タイトル</th>
-      <th>カテゴリ</th>
-    </tr>
-    <?php foreach($blogData as $column): ?>
-    <tr>
-      <td><?php echo $column['id']?></td>
-      <td><?php echo $column['title']?></td>
-      <td><?php echo $blog->setCategoryName($column['category'])?></td>
-      <td><a href="/detail.php?id=<?php echo $column['id']?>">詳細</a></td>
-    </tr>
-    <?php endforeach; ?>
-  </table>
-  
-</body>
-</html>
