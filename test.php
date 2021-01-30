@@ -35,16 +35,36 @@
     'status2' => $status2
   ];
 
-  echo '<pre>';
-  var_dump($blog2);
-  echo '</pre>';
+  // echo '<pre>';
+  // var_dump($blog2);
+  // echo '</pre>';
 
   //多次元配列
   //配列の中に配列
   $blogs = [$blog1, $blog2];
 
-  echo '<pre>';
-  var_dump($blogs);
-  echo '</pre>';
+  // echo '<pre>';
+  // var_dump($blogs);
+  // echo '</pre>';
+
+  // foreach($blog1 as $blog) {
+  //   echo '<pre>';
+  //   echo $blog;
+  //   echo '</pre>';
+  // }
+
+  // foreach($blog2 as $key => $value) {
+  //   echo '<pre>';
+  //   echo $key . '=' . $value;
+  //   echo '</pre>';
+  // }
+
+  foreach($blogs as $blog) {
+    foreach($blog as $value) {
+      echo '<pre>';
+      echo $value;
+      echo '</pre>';
+    }
+  }
 
 ?>
