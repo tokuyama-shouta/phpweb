@@ -35,7 +35,7 @@ $blog1 = array(
   'status' => $status
 );
 
-echo $blog1['title'];
+// echo $blog1['title'];
 
 $blog2 = [
   'id2' => ID2,
@@ -49,10 +49,29 @@ $blog2 = [
 
 $blog = [$blog1,$blog2];
   
-echo '<pre>';
-var_dump($blog2);
-echo '</pre>';
+// echo '<pre>';
+// var_dump($blog2);
+// echo '</pre>';
 
+
+// foreach($blog1 as $blog){
+//   echo '<pre>';
+//   echo $blog;
+//   echo '</pre>';
+// };
+
+foreach($blog2 as $key => $value) {
+  echo '<pre>';
+  echo $key . '=' . $value;
+  echo '</pre>';
+}
+foreach($blogs as $blog) {
+  foreach($blog as $value){
+    echo '<pre>';
+    echo $value;
+    echo '</pre>';
+  }
+}
 
 
 ?>
