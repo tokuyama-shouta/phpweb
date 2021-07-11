@@ -60,18 +60,18 @@ $blog = [$blog1,$blog2];
 //   echo '</pre>';
 // };
 
-foreach($blog2 as $key => $value) {
-  echo '<pre>';
-  echo $key . '=' . $value;
-  echo '</pre>';
-}
-foreach($blogs as $blog) {
-  foreach($blog as $value){
-    echo '<pre>';
-    echo $value;
-    echo '</pre>';
-  }
-}
+// foreach($blog2 as $key => $value) {
+//   echo '<pre>';
+//   echo $key . '=' . $value;
+//   echo '</pre>';
+// }
+// foreach($blogs as $blog) {
+//   foreach($blog as $value){
+//     echo '<pre>';
+//     echo $value;
+//     echo '</pre>';
+//   }
+// }
 
 
 ?>
