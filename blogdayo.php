@@ -3,7 +3,7 @@
 $blog = $_POST;
 
 if($blog['publish_status'] === 'un_publish'){
-  echo '記事がありません。';
+  echo '記事がありませんyo。';
 }
 
 // if($blog['publish_status'] === 'publish') {
@@ -27,7 +27,7 @@ if($blog['publish_status'] === 'un_publish'){
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Document!!</title>
 </head>
 <body>
   <h2><?php echo htmlspecialchars($blog['title'],ENT_QUOTES,'UTF-8'); ?></h2>
