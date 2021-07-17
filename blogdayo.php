@@ -19,6 +19,7 @@ if($blog['publish_status'] === 'un_publish'){
 // }
 
 //nl2br 改行をhtmlのbrに変換
+//sql
 ?>
 
 <!DOCTYPE html>
