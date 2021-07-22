@@ -33,7 +33,7 @@
  $result = $stmt->fetch(PDO::FETCH_ASSOC);
  
  if(!$result){
-   exit('ブログがありません。');
+   exit('ブログがありませんよ。');
  };
  
 ?>
