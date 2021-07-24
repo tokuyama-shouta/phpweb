@@ -1,4 +1,11 @@
-<?php echo helloworld?>
+<?php 
+
+require_once('dbc.php');
+
+$dbc = new Dbc();
+$blogData = $dbc->getAllBlog();
+
+?>
 
 <!DOCTYPE html>
 <html lang="ja">
